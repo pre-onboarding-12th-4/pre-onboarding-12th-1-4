@@ -57,7 +57,7 @@ export default function SignInForm() {
       ))}
       <Button
         type='submit'
-        dataTestId='signin-button'
+        dataTestId='signup-button'
         disabled={!isValid}
         text='회원가입'
         btnWidth=''
