@@ -53,6 +53,9 @@ const CheckBoxStyle = styled.label<{ checked: boolean }>`
   input[type='checkbox']:checked::before {
     transform: scale(1);
   }
+  span {
+    text-decoration: ${props => (props.checked ? 'line-through' : 'initial')};
+  }
 `;
 
 const FormStyle = styled.form`

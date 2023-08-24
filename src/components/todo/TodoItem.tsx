@@ -17,12 +17,10 @@ export default function TodoItem({ todo: { id, todo, isCompleted } }: Props) {
 
   return (
     <TodoItemStyle>
-      <label>
-        <CheckBoxStyle checked={isCompleted}>
-          <input type='checkbox' checked={isCompleted} onChange={handleChanged} />
-          <span>{todo}</span>
-        </CheckBoxStyle>
-      </label>
+      <CheckBoxStyle checked={isCompleted}>
+        <input type='checkbox' checked={isCompleted} onChange={handleChanged} />
+        <span>{todo}</span>
+      </CheckBoxStyle>
       <span className='btn-wrapper'>
         <Button
           text='수정'
