@@ -16,7 +16,7 @@ const ButtonStyle = styled.button`
 type Props = {
   type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
   text: string;
-  onBtnClick: React.MouseEventHandler<HTMLButtonElement>;
+  onBtnClick?: React.MouseEventHandler<HTMLButtonElement>;
   dataTestId: string;
   btnWidth: string;
   btnPadding: string;
