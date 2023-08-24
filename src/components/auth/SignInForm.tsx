@@ -1,9 +1,9 @@
 import Button from 'components/common/Button';
-import FormStyle from 'components/common/FormStyle';
 import Input from 'components/common/Input';
 import { AuthContext } from 'context/auth/AuthContext';
 import useFormValidation from 'hooks/useFormValidation';
 import { ChangeEvent, FormEvent, useContext } from 'react';
+import { FormStyle } from 'styles/CommonStyle';
 
 export default function SignInForm() {
   const {

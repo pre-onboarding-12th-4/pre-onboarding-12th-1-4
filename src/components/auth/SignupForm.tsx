@@ -1,9 +1,9 @@
 import { fetchSignUp } from 'api/auth';
 import Button from 'components/common/Button';
-import FormStyle from 'components/common/FormStyle';
 import Input from 'components/common/Input';
 import useFormValidation from 'hooks/useFormValidation';
 import { ChangeEvent, FormEvent } from 'react';
+import { FormStyle } from 'styles/CommonStyle';
 
 export default function SignInForm() {
   const {

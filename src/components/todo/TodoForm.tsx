@@ -1,18 +1,17 @@
 import Button from 'components/common/Button';
-import FormStyle from 'components/common/FormStyle';
 import Input from 'components/common/Input';
 import { TodoContext } from 'context/todo/TodoContext';
-import { ChangeEvent, FormEventHandler, useContext, useState } from 'react';
+import { ChangeEvent, FormEvent, useContext, useState } from 'react';
+import { FormStyle } from 'styles/CommonStyle';
 
-const TodoForm = () => {
+export default function TodoForm() {
   const { createTodo } = useContext(TodoContext);
+
   const [text, setText] = useState('');
 
-  const handleChange = (text: string) => {
-    setText(text);
-  };
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => setText(e.target.value);
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> | undefined = e => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     createTodo(text);
     setText('');
@@ -23,7 +22,7 @@ const TodoForm = () => {
   const input = {
     name: 'todo',
     value: text,
-    onChange: (e: ChangeEvent<HTMLInputElement>) => handleChange(e.target.value),
+    onChange: handleChange,
     type: 'text',
     inputId: 'todo',
     labelText: 'todo',
@@ -44,6 +43,4 @@ const TodoForm = () => {
       />
     </FormStyle>
   );
-};
-
-export default TodoForm;
+}

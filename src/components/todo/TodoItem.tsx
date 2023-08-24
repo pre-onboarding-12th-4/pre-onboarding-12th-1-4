@@ -1,22 +1,19 @@
-import ClearButton from 'components/common/ClearButton';
+import Button from 'components/common/Button';
 import { TodoContext } from 'context/todo/TodoContext';
-import { ChangeEventHandler, MouseEventHandler, useContext } from 'react';
-import { styled } from 'styled-components';
+import { ChangeEvent, useContext } from 'react';
+import { CheckBoxStyle, TodoItemStyle } from 'styles/CommonStyle';
 import { Todo } from 'types';
 
-type TodoItemProps = {
+interface Props {
   todo: Todo;
-};
-const TodoItem = ({ todo: { id, todo, isCompleted } }: TodoItemProps) => {
+}
+export default function TodoItem({ todo: { id, todo, isCompleted } }: Props) {
   const { updateTodo, deleteTodo } = useContext(TodoContext);
 
-  const handleChanged: ChangeEventHandler<HTMLInputElement> = e => {
+  const handleChanged = (e: ChangeEvent<HTMLInputElement>) =>
     updateTodo(id, todo, e.target.checked);
-  };
 
-  const handleDelete: MouseEventHandler<HTMLButtonElement> = () => {
-    deleteTodo(id);
-  };
+  const handleDelete = () => deleteTodo(id);
 
   return (
     <TodoItemStyle>
@@ -26,68 +23,24 @@ const TodoItem = ({ todo: { id, todo, isCompleted } }: TodoItemProps) => {
           <span>{todo}</span>
         </CheckBoxStyle>
       </label>
-      <ClearButton
-        type='button'
-        dataTestId='delete-button'
-        text='삭제'
-        onBtnClick={handleDelete}
-        disabled={false}
-        selected={false}
-      />
+      <span className='btn-wrapper'>
+        <Button
+          text='수정'
+          btnWidth='60px'
+          btnPadding='5px'
+          dataTestId='modify-button'
+          onClick={() => {
+            throw new Error('구현 필요');
+          }}
+        />
+        <Button
+          text='삭제'
+          btnWidth='60px'
+          btnPadding='5px'
+          dataTestId='delete-button'
+          onClick={handleDelete}
+        />
+      </span>
     </TodoItemStyle>
   );
-};
-
-export default TodoItem;
-
-const TodoItemStyle = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  word-break: break-all;
-  input {
-    margin-right: 10px;
-  }
-  .btn-wrapper {
-    flex-shrink: 0;
-    margin-left: 10px;
-  }
-  .btn-wrapper button {
-    margin-left: 5px;
-  }
-`;
-
-const CheckBoxStyle = styled.label<{ checked: boolean }>`
-  display: grid;
-  grid-template-columns: 1em auto;
-  gap: 0.75em;
-  input[type='checkbox'] {
-    appearance: none;
-    background: var(--color-white70);
-    margin: 0;
-    font: inherit;
-    width: 1.15em;
-    height: 1.15em;
-    border-radius: 50%;
-    transform: translateY(-0.075em);
-    display: grid;
-    place-content: center;
-  }
-  input[type='checkbox']::before {
-    content: '';
-    width: 0.65em;
-    height: 0.65em;
-    border-radius: 50%;
-    background: var(--color-blue);
-    transform: scale(0);
-    transition: 120ms transform ease-in-out;
-  }
-  input[type='checkbox']:checked::before {
-    transform: scale(1);
-  }
-
-  span {
-    text-decoration: ${props => (props.checked ? 'line-through' : 'initial')};
-  }
-`;
+}
