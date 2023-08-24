@@ -3,6 +3,15 @@ import Input from 'components/common/Input';
 import { AuthContext } from 'context/auth/AuthContext';
 import useFormValidation from 'hooks/useFormValidation';
 import { FormEvent, useContext } from 'react';
+import styled from 'styled-components';
+
+export const FormStyle = styled.form`
+  padding: 30px;
+  text-align: center;
+  button {
+    margin-top: 15px;
+  }
+`;
 
 export default function SignInForm() {
   const {
@@ -25,7 +34,7 @@ export default function SignInForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <FormStyle onSubmit={handleSubmit}>
       <Input
         name='email'
         value={email}
@@ -48,14 +57,7 @@ export default function SignInForm() {
         placeholder='비밀번호를 입력해주세요.'
         dataTestId='password-input'
       />
-      <Button
-        type='submit'
-        dataTestId='signin-button'
-        disabled={!isValid}
-        text='로그인'
-        btnWidth=''
-        btnPadding=''
-      />
-    </form>
+      <Button type='submit' dataTestId='signin-button' disabled={!isValid} text='로그인' />
+    </FormStyle>
   );
 }
