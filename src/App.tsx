@@ -1,7 +1,6 @@
 import Layout from 'components/common/Layout';
 import Signin from 'pages/SignIn';
 import Signup from 'pages/Signup';
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {

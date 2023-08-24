@@ -1,60 +1,68 @@
 import { fetchSignUp } from 'api/auth';
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
-import { Form } from 'styles/SignupStyle';
+import Button from 'components/common/Button';
+import Input from 'components/common/Input';
+import useFormValidation from 'hooks/useFormValidation';
+import { ChangeEvent, FormEvent } from 'react';
 
-const SignupForm = () => {
-  const [input, setInput] = useState({
-    email: '',
-    password: '',
+export default function SignInForm() {
+  const {
+    email,
+    password,
+    isValid,
+    emailValid,
+    passwordValid,
+    handleEmailChange,
+    handlePasswordChange,
+  } = useFormValidation({
+    initialEmail: '',
+    initialPassword: '',
   });
 
-  const inputRef = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-
-  const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setInput({
-      ...input,
-      [name]: value,
-    });
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    fetchSignUp(email, password);
   };
 
-  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    fetchSignUp(input.email, input.password);
-
-    setInput({ email: '', password: '' });
-  };
+  const formFields = [
+    {
+      id: 1,
+      name: 'email',
+      value: email,
+      onChange: (e: ChangeEvent<HTMLInputElement>) => handleEmailChange(e.target.value),
+      type: 'text',
+      inputId: 'email',
+      labelText: 'email',
+      warning: emailValid,
+      placeholder: '이메일을 입력해주세요.',
+      dataTestId: 'email-input',
+    },
+    {
+      id: 2,
+      name: 'password',
+      value: password,
+      onChange: (e: ChangeEvent<HTMLInputElement>) => handlePasswordChange(e.target.value),
+      type: 'password',
+      inputId: 'password',
+      labelText: 'password',
+      warning: passwordValid,
+      placeholder: '비밀번호를 입력해주세요.',
+      dataTestId: 'password-input',
+    },
+  ];
 
   return (
-    <>
-      <Form onSubmit={submitHandler}>
-        <label htmlFor='email'>이메일</label>
-        <input
-          data-testid='email-input'
-          type='email'
-          name='email'
-          value={input.email}
-          onChange={changeHandler}
-          placeholder='email'
-          ref={inputRef}
-        />
-        <label htmlFor='password'>비밀번호</label>
-        <input
-          data-testid='password-input'
-          type='password'
-          name='password'
-          value={input.password}
-          onChange={changeHandler}
-          placeholder='password'
-        />
-        <button data-testid='signup-button' type='submit'>
-          회원가입
-        </button>
-      </Form>
-    </>
+    <form onSubmit={handleSubmit}>
+      {formFields.map(input => (
+        <Input key={input.id} {...input} />
+      ))}
+      <Button
+        type='submit'
+        dataTestId='signin-button'
+        disabled={!isValid}
+        text='회원가입'
+        btnWidth=''
+        btnPadding=''
+      />
+    </form>
   );
-};
-export default SignupForm;
+}

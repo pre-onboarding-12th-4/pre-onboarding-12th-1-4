@@ -21,9 +21,18 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
     }
   }, []);
 
-  const signUp = useCallback(async (email: string, password: string) => {
-    await fetchSignUp(email, password);
-  }, []);
+  const signUp = useCallback(
+    async (email: string, password: string) => {
+      try {
+        await fetchSignUp(email, password);
+        alert('회원가입이 완료되었습니다.');
+        navigate('/signin');
+      } catch (error) {
+        alert('회원가입에 실패했습니다.');
+      }
+    },
+    [navigate],
+  );
 
   const logout = useCallback(() => {
     localStorage.removeItem('token');
