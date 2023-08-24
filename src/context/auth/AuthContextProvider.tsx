@@ -1,14 +1,23 @@
 import { AuthContext } from './AuthContext';
 import { fetchSignIn, fetchSignUp } from 'api/auth';
 import { ReactNode, useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function AuthContextProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+
   const signIn = useCallback(async (email: string, password: string) => {
-    const res = await fetchSignIn(email, password);
-    if (res) {
-      localStorage.setItem('token', res.access_token);
-      setUser(true);
+    try {
+      const res = await fetchSignIn(email, password);
+      if (res && res.access_token) {
+        localStorage.setItem('token', res.access_token);
+        setUser(true);
+        navigate('/todo');
+      }
+    } catch (error) {
+      alert('일치하는 사용자가 없습니다.');
     }
   }, []);
 

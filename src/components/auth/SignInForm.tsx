@@ -1,9 +1,8 @@
-import { fetchSignIn } from 'api/auth';
 import Button from 'components/common/Button';
 import Input from 'components/common/Input';
+import { AuthContext } from 'context/auth/AuthContext';
 import useFormValidation from 'hooks/useFormValidation';
-import { FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { FormEvent, useContext } from 'react';
 
 export default function SignInForm() {
   const {
@@ -18,19 +17,11 @@ export default function SignInForm() {
     initialEmail: '',
     initialPassword: '',
   });
+  const authCtx = useContext(AuthContext);
 
-  const navigate = useNavigate()
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();  
-    const res = await fetchSignIn(email, password);
-
-    if (res.access_token) {
-      // contextAPI(res.access_token)
-      navigate('/todo')
-    } else {
-      // 사용자 정보 없음 알림
-    }
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    authCtx.signIn(email, password);
   };
 
   return (
