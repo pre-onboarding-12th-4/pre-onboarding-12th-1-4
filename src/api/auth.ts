@@ -8,15 +8,17 @@ const fetchSignIn = async (email: string, password: string): Promise<{ access_to
   return response.data;
 };
 
-const fetchSignUp = async (email: string, password: string): Promise<boolean> => {
-  const response = await instance.post('/auth/signup', {
-    email: email,
-    password: password,
-  });
-  if (response.status === 201) {
-    return true;
-  } else {
-    return false;
+const fetchSignUp = async (email: string, password: string): Promise<any> => {
+  try {
+    const response = await instance.post('/auth/signup', {
+      email: email,
+      password: password,
+    });
+    if (response.status === 201) {
+      alert('회원가입이 완료되었습니다.');
+    }
+  } catch (err) {
+    alert('회원가입에 실패했습니다.');
   }
 };
 
