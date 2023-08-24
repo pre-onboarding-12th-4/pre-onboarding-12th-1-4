@@ -22,6 +22,7 @@ const WarningText = styled.p`
 `;
 
 type Props = {
+  name: string;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   type: string;
@@ -33,7 +34,8 @@ type Props = {
 };
 
 export default function Input(props: Props) {
-  const { value, onChange, type, inputId, labelText, warning, placeholder, dataTestId } = props;
+  const { name, value, onChange, type, inputId, labelText, warning, placeholder, dataTestId } =
+    props;
 
   return (
     <>
@@ -41,6 +43,7 @@ export default function Input(props: Props) {
         {labelText}
       </label>
       <InputStyle
+        name={name}
         value={value}
         onChange={onChange}
         type={type ? type : 'text'}
