@@ -1,8 +1,9 @@
 import Button from 'components/common/Button';
+import FormStyle from 'components/common/FormStyle';
 import Input from 'components/common/Input';
 import { AuthContext } from 'context/auth/AuthContext';
 import useFormValidation from 'hooks/useFormValidation';
-import { FormEvent, useContext } from 'react';
+import { ChangeEvent, FormEvent, useContext } from 'react';
 
 export default function SignInForm() {
   const {
@@ -24,30 +25,36 @@ export default function SignInForm() {
     authCtx.signIn(email, password);
   };
 
+  const formFields = [
+    {
+      name: 'email',
+      value: email,
+      onChange: (e: ChangeEvent<HTMLInputElement>) => handleEmailChange(e.target.value),
+      type: 'text',
+      inputId: 'email',
+      labelText: 'email',
+      warning: emailValid,
+      placeholder: '이메일을 입력해주세요.',
+      dataTestId: 'email-input',
+    },
+    {
+      name: 'password',
+      value: password,
+      onChange: (e: ChangeEvent<HTMLInputElement>) => handlePasswordChange(e.target.value),
+      type: 'password',
+      inputId: 'password',
+      labelText: 'password',
+      warning: passwordValid,
+      placeholder: '비밀번호를 입력해주세요.',
+      dataTestId: 'password-input',
+    },
+  ];
+
   return (
-    <form onSubmit={handleSubmit}>
-      <Input
-        name='email'
-        value={email}
-        onChange={e => handleEmailChange(e.target.value)}
-        type='text'
-        inputId='email'
-        labelText='email'
-        warning={emailValid}
-        placeholder='이메일을 입력해주세요.'
-        dataTestId='email-input'
-      />
-      <Input
-        name='password'
-        value={password}
-        onChange={e => handlePasswordChange(e.target.value)}
-        type='password'
-        inputId='password'
-        labelText='password'
-        warning={passwordValid}
-        placeholder='비밀번호를 입력해주세요.'
-        dataTestId='password-input'
-      />
+    <FormStyle onSubmit={handleSubmit}>
+      {formFields.map((input, index) => (
+        <Input key={index} {...input} />
+      ))}
       <Button
         type='submit'
         dataTestId='signin-button'
@@ -56,6 +63,6 @@ export default function SignInForm() {
         btnWidth=''
         btnPadding=''
       />
-    </form>
+    </FormStyle>
   );
 }

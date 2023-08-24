@@ -1,4 +1,4 @@
-import React from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
 const ButtonStyle = styled.button`
@@ -13,32 +13,21 @@ const ButtonStyle = styled.button`
   }
 `;
 
-type Props = {
-  type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
-  onBtnClick?: React.MouseEventHandler<HTMLButtonElement>;
-  dataTestId: string;
-  btnWidth: string;
-  btnPadding: string;
-  disabled: boolean;
-};
+  dataTestId?: string;
+  btnWidth?: string;
+  btnPadding?: string;
+}
 
-export default function Button(props: Props) {
-  const { type, text, onBtnClick, dataTestId, btnWidth, btnPadding, disabled } = props;
-
+export default function Button({ text, dataTestId, btnWidth, btnPadding, ...ButtonProps }: Props) {
   const styleChange = {
     width: btnWidth || '100%',
     padding: btnPadding || '13px',
   };
 
   return (
-    <ButtonStyle
-      type={type ? type : 'button'}
-      onClick={onBtnClick}
-      data-testid={dataTestId}
-      style={styleChange}
-      disabled={disabled}
-    >
+    <ButtonStyle data-testid={dataTestId} style={styleChange} {...ButtonProps}>
       {text}
     </ButtonStyle>
   );

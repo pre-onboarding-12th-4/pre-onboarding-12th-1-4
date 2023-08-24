@@ -1,4 +1,4 @@
-import React from 'react';
+import { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
 const InputStyle = styled.input`
@@ -21,36 +21,32 @@ const WarningText = styled.p`
   height: 28px;
 `;
 
-type Props = {
-  name: string;
-  value: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-  type: string;
-  inputId: string;
-  labelText: string;
-  warning: string;
-  placeholder: string;
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   dataTestId: string;
-};
+  warning: string;
+  labelText: string;
+  inputId: string;
+  // ref: HTMLInputElement;
+}
 
-export default function Input(props: Props) {
-  const { name, value, onChange, type, inputId, labelText, warning, placeholder, dataTestId } =
-    props;
-
+export default function Input({
+  dataTestId,
+  warning,
+  labelText,
+  inputId,
+  // ref,
+  ...InputProps
+}: Props) {
   return (
     <>
       <label className='a11y-hidden' htmlFor={inputId}>
         {labelText}
       </label>
       <InputStyle
-        name={name}
-        value={value}
-        onChange={onChange}
-        type={type ? type : 'text'}
         id={inputId}
-        placeholder={placeholder}
         data-testid={dataTestId}
-        autoComplete={type === 'password' ? 'off' : 'on'}
+        {...InputProps}
+        // ref={ref}
       />
       <WarningText>{warning}</WarningText>
     </>
