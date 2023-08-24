@@ -25,7 +25,7 @@ const HeaderStyle = styled.header`
   }
 `;
 
-const CheckBoxStyle = styled.label`
+const CheckBoxStyle = styled.label<{ checked: boolean }>`
   display: grid;
   grid-template-columns: 1em auto;
   gap: 0.75em;
@@ -55,4 +55,45 @@ const CheckBoxStyle = styled.label`
   }
 `;
 
-export { ContainerStyle, HeaderStyle, CheckBoxStyle };
+const FormStyle = styled.form`
+  padding: 30px;
+  text-align: center;
+  button {
+    margin-top: 15px;
+  }
+`;
+
+const TodoListStyle = styled.ul`
+  max-height: 480px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px 30px;
+  clear: both;
+  p {
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+  }
+`;
+
+const TodoItemStyle = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  word-break: break-all;
+  input {
+    margin-right: 10px;
+  }
+  .btn-wrapper {
+    flex-shrink: 0;
+    margin-left: 10px;
+  }
+  .btn-wrapper button {
+    margin-left: 5px;
+  }
+`;
+
+export { ContainerStyle, HeaderStyle, CheckBoxStyle, FormStyle, TodoListStyle, TodoItemStyle };
