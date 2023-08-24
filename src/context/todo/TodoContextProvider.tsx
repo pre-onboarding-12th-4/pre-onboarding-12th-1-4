@@ -25,7 +25,7 @@ export default function TodoContextProvider({ children }: { children: ReactNode 
     const res = await fetchUpdateTodo(id, todo, isCompleted);
     setTodos(prev => {
       const arr = [...prev];
-      arr[arr.findIndex(item => item.id === id)].todo = res.todo;
+      arr[arr.findIndex(item => item.id === id)] = res;
       return arr;
     });
   }, []);
