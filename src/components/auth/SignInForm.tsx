@@ -1,17 +1,9 @@
 import Button from 'components/common/Button';
+import FormStyle from 'components/common/FormStyle';
 import Input from 'components/common/Input';
 import { AuthContext } from 'context/auth/AuthContext';
 import useFormValidation from 'hooks/useFormValidation';
 import { ChangeEvent, FormEvent, useContext } from 'react';
-import styled from 'styled-components';
-
-export const FormStyle = styled.form`
-  padding: 30px;
-  text-align: center;
-  button {
-    margin-top: 15px;
-  }
-`;
 
 export default function SignInForm() {
   const {
