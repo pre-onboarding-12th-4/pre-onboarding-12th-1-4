@@ -3,6 +3,15 @@ import Input from 'components/common/Input';
 import { AuthContext } from 'context/auth/AuthContext';
 import useFormValidation from 'hooks/useFormValidation';
 import { ChangeEvent, FormEvent, useContext } from 'react';
+import styled from 'styled-components';
+
+export const FormStyle = styled.form`
+  padding: 30px;
+  text-align: center;
+  button {
+    margin-top: 15px;
+  }
+`;
 
 export default function SignInForm() {
   const {
@@ -26,7 +35,6 @@ export default function SignInForm() {
 
   const formFields = [
     {
-      id: 1,
       name: 'email',
       value: email,
       onChange: (e: ChangeEvent<HTMLInputElement>) => handleEmailChange(e.target.value),
@@ -38,7 +46,6 @@ export default function SignInForm() {
       dataTestId: 'email-input',
     },
     {
-      id: 2,
       name: 'password',
       value: password,
       onChange: (e: ChangeEvent<HTMLInputElement>) => handlePasswordChange(e.target.value),
@@ -52,9 +59,9 @@ export default function SignInForm() {
   ];
 
   return (
-    <form onSubmit={handleSubmit}>
-      {formFields.map(input => (
-        <Input key={input.id} {...input} />
+    <FormStyle onSubmit={handleSubmit}>
+      {formFields.map((input, index) => (
+        <Input key={index} {...input} />
       ))}
       <Button
         type='submit'
@@ -64,6 +71,6 @@ export default function SignInForm() {
         btnWidth=''
         btnPadding=''
       />
-    </form>
+    </FormStyle>
   );
 }
