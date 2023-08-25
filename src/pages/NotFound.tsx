@@ -1,6 +1,4 @@
 import Button from 'components/common/Button';
-import { AuthContext } from 'context/auth/AuthContext';
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { ContainerStyle, HeaderStyle } from 'styles/CommonStyle';
@@ -18,7 +16,7 @@ const MainStyle = styled.main`
 `;
 
 export default function NotFound() {
-  const { user } = useContext(AuthContext);
+  const token = localStorage.getItem('token');
   const navigate = useNavigate();
   return (
     <ContainerStyle>
@@ -28,7 +26,7 @@ export default function NotFound() {
       <MainStyle>
         <h2>404</h2>
         <p>접근할 수 없는 페이지입니다.</p>
-        {user ? (
+        {!token ? (
           <Button
             type='button'
             dataTestId=''
