@@ -120,8 +120,7 @@ module.exports = {
 │   │    ├── 📄 Button.tsx
 │   │    └── 📄 Input.tsx
 │   ├── 📂 auth
-│   │    ├── 📄 SignInForm.tsx
-│   │    └── 📄 SignupForm.tsx
+│   │    └── 📄 index.tsx
 │   ├── 📂 todo
 │   │    ├── 📄 TodoForm.tsx
 │   │    ├── 📄 TodoItem.tsx
@@ -139,9 +138,8 @@ module.exports = {
 │   │    └── 📄 useLoading.ts
 ├── 📂 pages
 │   ├── 📄 Home.tsx
-│   ├── 📄 SignIn.tsx
-│   ├── 📄 SignUp.tsx
-│   ├──📄 Todo.tsx
+│   ├── 📄 Auth.tsx
+│   ├── 📄 Todo.tsx
 │   └── 📄 NotFound.tsx
 ├── 📂 styles
 └── 📂 types
