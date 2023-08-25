@@ -15,7 +15,9 @@ export default function TodoItem({ todo }: Props) {
   const handleChanged = (e: ChangeEvent<HTMLInputElement>) =>
     updateTodo(todo.id, todo.todo, e.target.checked);
 
-  const handleDelete = () => deleteTodo(todo.id);
+  const handleDelete = () => {
+    if (confirm('삭제하시겠습니까?')) deleteTodo(todo.id);
+  };
 
   return (
     <TodoItemStyle>
