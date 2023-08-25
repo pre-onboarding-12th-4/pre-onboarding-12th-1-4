@@ -53,6 +53,7 @@ export default function TodoItemEdit({ todo, cancelEdit }: Props) {
           warning={warningText}
           labelText={'todoEdit'}
           inputId={'edit-todo'}
+          focus
           value={newTodo}
           onChange={e => {
             setNewTodo(e.target.value);

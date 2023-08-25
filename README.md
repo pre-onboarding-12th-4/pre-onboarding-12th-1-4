@@ -7,7 +7,7 @@
 
 - 원티드 프리온보딩 프론트엔트 인턴쉽 12차 4팀입니다.
 
-|                                     **강병헌**                                      |                                     **김누리**                                      |                                     **김신혁**                                      |                                      **박윤철**                                      |                                      **우혜리**                                       |                                      **이은학**                                      |
+|                                     **강병헌**                                      |                                     **김누리**                                      |                                     **김신혁**                                      |                                      **박윤철**                                      |                                   **우혜리 (팀장)**                                   |                                      **이은학**                                      |
 | :---------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
 | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/33623123?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/19181088?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/73675549?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/22779951?v=4" > | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/107099724?v=4" > | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/52943412?v=4" > |
 |                      [llbllhllk](https://github.com/llbllhllk)                      |                       [nuri1042](https://github.com/nuri1042)                       |                       [devshinn](https://github.com/devshinn)                       |                   [mrsimplelife](https://github.com/mrsimplelife)                    |                       [hyeri-woo](https://github.com/hyeri-woo)                       |                       [dmsgkr02](https://github.com/dmsgkr02)                        |
@@ -127,8 +127,7 @@ module.exports = {
 │   │    ├── 📄 Button.tsx
 │   │    └── 📄 Input.tsx
 │   ├── 📂 auth
-│   │    ├── 📄 SignInForm.tsx
-│   │    └── 📄 SignupForm.tsx
+│   │    └── 📄 AuthForm.tsx
 │   ├── 📂 todo
 │   │    ├── 📄 TodoForm.tsx
 │   │    ├── 📄 TodoItem.tsx
@@ -153,11 +152,16 @@ module.exports = {
 ├── 📂 route
 │   ├── 📄 loader.ts
 ├── 📂 styles
+│   ├── 📄 CommonStyle.tsx
+│   └── 📄 GlobalStyle.tsx
 └── 📂 types
+    └── 📄 index.tsx
 
 ```
 
 ## UI
+
+![UI mobile (1)](https://github.com/pre-onboarding-12th-4/pre-onboarding-12th-1-4/assets/107099724/acf43c08-5e78-4e5e-a3ef-7ae0b7535940)
 
 ## 기능 상세
 

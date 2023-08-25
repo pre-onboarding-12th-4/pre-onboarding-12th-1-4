@@ -10,7 +10,7 @@ import { ContainerStyle, HeaderStyle } from 'styles/CommonStyle';
 const Container = styled(ContainerStyle)`
   position: relative;
   max-width: 600px;
-  padding-bottom: 80px;
+  padding-bottom: 100px;
   min-height: 315px;
   & > div {
     padding: 10px;
@@ -38,8 +38,8 @@ const Todo = () => {
           onClick={logout}
         />
       </div>
-      <TodoForm />
       <TodoList />
+      <TodoForm />
     </Container>
   );
 };
