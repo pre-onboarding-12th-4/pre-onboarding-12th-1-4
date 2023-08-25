@@ -1,4 +1,4 @@
-![UI mobile](https://github.com/pre-onboarding-12th-4/pre-onboarding-12th-1-4/assets/107099724/d1c7b42b-623b-4c93-9cc2-213fa18d2e97)# 원티드 프리온보딩 1주차 과제
+# 원티드 프리온보딩 1주차 과제
 
 - 해당 repository는 원티드 프리온보딩 프론트엔트 인턴쉽 12차 1주차 과제을 다뤘습니다.
 - 프리온보딩 선발과제인 todo를 팀원들과 상의해 각 기능의 Best Practice를 도출하고 합친 결과물입니다.
