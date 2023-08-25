@@ -19,8 +19,14 @@ export default function TodoItemEdit({ todo, cancelEdit }: Props) {
       setWarningText('내용을 입력해주세요~');
       return;
     }
-    updateTodo(todo.id, newTodo, todo.isCompleted);
-    cancelEdit();
+    if (newTodo === todo.todo) {
+      alert('수정된 내용이 없습니다.');
+      return;
+    }
+    if (confirm('수정된 내용을 저장하시겠습니까?')) {
+      updateTodo(todo.id, newTodo, todo.isCompleted);
+      cancelEdit();
+    }
   }, [cancelEdit, newTodo, todo.id, todo.isCompleted, updateTodo]);
 
   return (
