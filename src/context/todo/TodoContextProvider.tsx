@@ -1,45 +1,48 @@
-import { TodoContext } from './TodoContext';
 import { fetchCreateTodo, fetchDeleteTodo, fetchGetTodo, fetchUpdateTodo } from 'api/todo';
+import useLoading from 'hooks/useLoading';
 import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { Todo } from 'types';
+import { TodoContext } from './TodoContext';
 
 export default function TodoContextProvider({ children }: { children: ReactNode }) {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const { loading, isLoaded, handleLoading } = useLoading();
 
   useEffect(() => {
     getTodo();
   }, []);
 
   const getTodo = useCallback(async () => {
-    const res = await fetchGetTodo();
+    const res = await handleLoading(() => fetchGetTodo());
     setTodos(res);
-  }, []);
+  }, [handleLoading]);
 
-  const createTodo = useCallback(async (todo: string) => {
-    const res = await fetchCreateTodo(todo);
+  const createTodo = useCallback( async (todo: string) => {
+    const res = await handleLoading(() => fetchCreateTodo(todo));
     setTodos(prev => [...prev, res]);
     return res;
-  }, []);
+  }, [handleLoading]);
 
   const updateTodo = useCallback(async (id: number, todo: string, isCompleted: boolean) => {
-    const res = await fetchUpdateTodo(id, todo, isCompleted);
+    const res = await handleLoading(() => fetchUpdateTodo(id, todo, isCompleted));
     setTodos(prev => {
       const arr = [...prev];
       arr[arr.findIndex(item => item.id === id)] = res;
       return arr;
     });
-  }, []);
+  }, [handleLoading]);
 
   const deleteTodo = useCallback(async (id: number) => {
-    const res = await fetchDeleteTodo(id);
+    const res = await handleLoading(() => fetchDeleteTodo(id));
     if (res) {
       setTodos(prev => prev.filter(item => item.id !== id));
     }
-  }, []);
+  }, [handleLoading]);
 
   return (
-    <TodoContext.Provider value={{ todos, createTodo, updateTodo, deleteTodo }}>
+    <TodoContext.Provider value={{ todos, createTodo, updateTodo, deleteTodo, loading, isLoaded }}>
       {children}
     </TodoContext.Provider>
   );
 }
+
