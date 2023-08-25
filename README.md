@@ -1,14 +1,40 @@
-# 동료학습 1주차 과제
+# 원티드 프리온보딩 1주차 과제  
+- 해당 repository는 원티드 프리온보딩 프론트엔트 인턴쉽 12차 1주차 과제을 다뤘습니다. 
+- 프리온보딩 선발과제인 todo를 팀원들과 상의해 각 기능의 Best Practice를 도출하고 합친 결과물입니다. 
 
-## 팀 구성원 및 역할 분담
+
+## 팀 구성원 및 역할 
+- 원티드 프리온보딩 프론트엔트 인턴쉽 12차 4팀입니다.
 
 | **강병헌** | **김누리** | **김신혁** | **박윤철** | **우혜리** | **이은학** |
 | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
-
-|
-<img width="180" alt="" src="https://avatars.githubusercontent.com/u/33623123?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/19181088?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/73675549?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/22779951?v=4" > |<img width="180" alt="" src="https://avatars.githubusercontent.com/u/107099724?v=4" > |<img width="180" alt="" src="https://avatars.githubusercontent.com/u/52943412?v=4" > |
+|<img width="180" alt="" src="https://avatars.githubusercontent.com/u/33623123?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/19181088?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/73675549?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/22779951?v=4" > |<img width="180" alt="" src="https://avatars.githubusercontent.com/u/107099724?v=4" > |<img width="180" alt="" src="https://avatars.githubusercontent.com/u/52943412?v=4" > |
 | [llbllhllk](https://github.com/llbllhllk) | [nuri1042](https://github.com/nuri1042) | [devshinn](https://github.com/devshinn) | [mrsimplelife](https://github.com/mrsimplelife) | [hyeri-woo](https://github.com/hyeri-woo) | [dmsgkr02](https://github.com/dmsgkr02) |
-|SignIn|SignUp|초기 프로젝트 환경 설정, todo 수정|todo 보기, 삭제|axios / context api 설정, 스타일링|route 및 권한에 따른 global layout 작성|
+|SignIn 페이지|SignUp 페이지|초기 프로젝트 환경 설정, todo 수정|todo 보기, 삭제|axios / context api 설정, 스타일링|route 및 권한에 따른 global layout 작성|
+
+## 배포 링크
+
+## 프로젝트 실행 방법 
+1. 프로젝트 클론 
+```
+git clone https://github.com/pre-onboarding-12th-4/pre-onboarding-12th-1-4.git
+```
+
+2. 해당 폴더로 이동
+```
+cd pre-onboarding-12th-1-4
+```
+
+3. 프로젝트 패키지 설치
+```
+npm install
+```
+4. 프로젝트 실행
+```
+npm start
+```
+
+
 
 ## 기술 및 개발 환경
 
@@ -84,11 +110,47 @@ module.exports = {
 ## 폴더 구조
 
 ```
+📦 src
+├── 📂 api
+│   ├── 📄 index.ts
+│   ├── 📄 auth.ts
+│   └── 📄 todo.ts
+├── 📂 components
+│   ├── 📂 common
+│   │    ├── 📄 Button.tsx
+│   │    └── 📄 Input.tsx
+│   ├── 📂 auth
+│   │    ├── 📄 SignInForm.tsx
+│   │    └── 📄 SignupForm.tsx
+│   ├── 📂 todo
+│   │    ├── 📄 TodoForm.tsx
+│   │    ├── 📄 TodoItem.tsx
+│   │    ├── 📄 TodoItemEdit.tsx
+│   │    └── 📄 TodoList.tsx
+├── 📂 context
+│   ├── 📂 auth
+│   │    ├── 📄 AuthContext.tsx
+│   │    └── 📄 AuthContextProvider.tsx
+│   └── 📂 todo
+│   │    ├── 📄 TodoContext.tsx
+│   │    └── 📄 TodoContextProvider.tsx
+├── 📂 hooks
+│   │    ├── 📄 useFormValidation.ts
+│   │    └── 📄 useLoading.ts
+├── 📂 pages
+│   ├── 📄 Home.tsx
+│   ├── 📄 SignIn.tsx
+│   ├── 📄 SignUp.tsx
+│   ├──📄 Todo.tsx
+│   └── 📄 NotFound.tsx
+├── 📂 styles
+└── 📂 types
 
 ```
+## UI
 
-## 동료 학습
 
+## 기능 상세
 현재 README에는 동료학습을 통해 도출된 각 Assignment의 Best Practice을 포함되어 있습니다. 더 자세한 내용은 해당 <a href='https://www.notion.so/1-Todo-889cfeef034b42ea8d071a5ecfa2fff5'>노션 링크</a>에서 확인하실 수 있습니다.
 
 ### Assignment 1: 유효성 검사
@@ -132,7 +194,7 @@ module.exports = {
 - ✅ 이유: 컴포넌트가 렌더링 되기 전에 api 응답을 받고 렌더링에 들어가기 때문에 사용자 경험을 개선하기 위함
 - ✅ 이유: 새로운 함수를 사용해서 router를 처리하기 위함
 
-### Assignment 4 리다이렉트
+### Assignment 4: 리다이렉트
 
 > - 로그인 여부에 따른 리다이렉트 처리를 구현해주세요
 >   - 로컬 스토리지에 토큰이 있는 상태로 `/signin` 또는 `/signup` 페이지에 접속한다면 `/todo` 경로로 리다이렉트 시켜주세요
@@ -144,7 +206,7 @@ module.exports = {
 - ✅ 이유: 컴포넌트가 렌더링 되기 전에 api 응답을 받고 렌더링에 들어가기 때문에 사용자 경험을 개선하기 위함
 - ✅ 이유: 새로운 함수를 사용해서 router를 처리하기 위함
 
-### Assignment 5 투두 리스트 목록과 체크박스
+### Assignment 5: 투두 리스트 목록과 체크박스
 
 > - `/todo`경로에 접속하면 투두 리스트의 목록을 볼 수 있도록 해주세요
 > - 목록에서는 TODO의 내용과 완료 여부가 표시되어야 합니다.
@@ -169,7 +231,7 @@ module.exports = {
 - ✅ 이유: pages 안의 파일 들은 최대한 간단하게 유지하기로 함
 - Item 컴포넌트는 받은 props를 todoItem state 변수에 저장하고, isCompleted 속성을 checkbox checked 값에 할당
 
-### Assignment 6 투두 리스트 추가
+### Assignment 6: 투두 리스트 추가
 
 > - 리스트 페이지에 새로운 TODO를 입력할 수 있는 input과 추가 button을 만들어주세요
 > - 추가 button을 클릭하면 입력 input의 내용이 새로운 TODO로 추가되도록 해주세요
@@ -186,7 +248,7 @@ module.exports = {
 - ✅ 이유: todo 데이터를 Context api를 사용해 한 곳에서 관리하기 위함
 - 제출이 완료되면 input value 초기화
 
-### Assignment 7&10 투두리스트,체크박스 수정
+### Assignment 7 & 10: 투두리스트,체크박스 수정
 
 > - TODO의 체크박스를 통해 완료 여부를 수정할 수 있도록 해주세요.
 > - 투두 리스트의 수정 기능을 구현해주세요
@@ -208,7 +270,7 @@ module.exports = {
 - updateTodo는 context api로 사용해서 state 재할당
 - ✅ 이유: todo 데이터를 Context api를 사용해 한 곳에서 관리하기 위함
 
-### Assignment 8 & Assignment 9 투두리스트 삭제
+### Assignment 8 & 9: 투두리스트 삭제
 
 > - TODO 우측에 수정버튼과 삭제 버튼을 만들어주세요
 > - 투두 리스트의 삭제 기능을 구현해주세요
