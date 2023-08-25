@@ -2,7 +2,7 @@ import SignUpForm from 'components/auth/SignupForm';
 import AuthContextProvider from 'context/auth/AuthContextProvider';
 import { ContainerStyle, HeaderStyle } from 'styles/CommonStyle';
 
-const Signup = () => {
+const SignUp = () => {
   return (
     <AuthContextProvider>
       <ContainerStyle>
@@ -14,4 +14,4 @@ const Signup = () => {
     </AuthContextProvider>
   );
 };
-export default Signup;
+export default SignUp;
