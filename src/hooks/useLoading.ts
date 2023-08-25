@@ -4,7 +4,7 @@ export default function useLoading() {
   const [loading, setLoading] = useState<boolean>(false);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
-  const handleLoading = useCallback(async <R>(func: <I>(input?: I) => Promise<R>): Promise<R> => {
+  const handleLoading = useCallback(async <R>(func: () => Promise<R>): Promise<R> => {
     setLoading(true);
     const res = await func();
     setLoading(false);

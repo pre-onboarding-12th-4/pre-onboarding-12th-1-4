@@ -21,14 +21,14 @@ export default function TodoList() {
 
 const Loading = ({ loading }: { loading: boolean }) => {
   return (
-    <LoadingStyle loading={loading}>
+    <LoadingStyle loading={`${loading}`}>
       <div className='loading__bar'></div>
     </LoadingStyle>
   );
 };
 
-const LoadingStyle = styled.div<{ loading: boolean }>`
-  opacity: ${({ loading }) => (loading ? 1 : 0)};
+const LoadingStyle = styled.div<{ loading: string }>`
+  opacity: ${({ loading }) => (loading === 'true' ? 1 : 0)};
   position: absolute;
   bottom: 0;
   left: 0;
