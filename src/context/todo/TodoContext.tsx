@@ -6,9 +6,13 @@ export const TodoContext = createContext<{
   createTodo: (todo: string) => void;
   updateTodo: (id: number, todo: string, isCompleted: boolean) => void;
   deleteTodo: (id: number) => void;
+  loading: boolean;
+  isLoaded: boolean;
 }>({
   todos: [],
   createTodo: () => {},
   deleteTodo: () => {},
   updateTodo: () => {},
+  loading: false,
+  isLoaded: false,
 });

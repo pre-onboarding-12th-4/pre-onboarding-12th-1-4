@@ -1,3 +1,4 @@
+import TodoContextProvider from 'context/todo/TodoContextProvider';
 import Home from 'pages/Home';
 import NotFound from 'pages/NotFound';
 import Signin from 'pages/SignIn';
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/todo',
-    element: <Todo />,
+    element: (
+      <TodoContextProvider>
+        <Todo />
+      </TodoContextProvider>
+    ),
     loader: todoLoader,
   },
   {
