@@ -156,8 +156,8 @@ module.exports = {
 ```
 
 ## UI
-![UI mobile (1)](https://github.com/pre-onboarding-12th-4/pre-onboarding-12th-1-4/assets/107099724/acf43c08-5e78-4e5e-a3ef-7ae0b7535940)
 
+![UI mobile (1)](https://github.com/pre-onboarding-12th-4/pre-onboarding-12th-1-4/assets/107099724/acf43c08-5e78-4e5e-a3ef-7ae0b7535940)
 
 ## 기능 상세
 
