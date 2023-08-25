@@ -1,25 +1,44 @@
+import Button from 'components/common/Button';
 import { TodoContext } from 'context/todo/TodoContext';
-import { ChangeEventHandler, MouseEventHandler, useContext } from 'react';
+import { ChangeEvent, useContext } from 'react';
+import { CheckBoxStyle, TodoItemStyle } from 'styles/CommonStyle';
 import { Todo } from 'types';
 
-type TodoItemProps = {
+interface Props {
   todo: Todo;
-};
-const TodoItem = ({ todo: { id, todo, isCompleted } }: TodoItemProps) => {
+}
+export default function TodoItem({ todo: { id, todo, isCompleted } }: Props) {
   const { updateTodo, deleteTodo } = useContext(TodoContext);
-  const handleChanged: ChangeEventHandler<HTMLInputElement> = e => {
-    updateTodo(id, todo, e.target.checked);
-  };
-  const handleDelete: MouseEventHandler<HTMLButtonElement> = () => {
-    deleteTodo(id);
-  };
-  return (
-    <div>
-      <input type='checkbox' checked={isCompleted} onChange={handleChanged} />
-      <span>예제 텍스트</span>
-      <button onClick={handleDelete}>삭제</button>
-    </div>
-  );
-};
 
-export default TodoItem;
+  const handleChanged = (e: ChangeEvent<HTMLInputElement>) =>
+    updateTodo(id, todo, e.target.checked);
+
+  const handleDelete = () => deleteTodo(id);
+
+  return (
+    <TodoItemStyle>
+      <CheckBoxStyle checked={isCompleted}>
+        <input type='checkbox' checked={isCompleted} onChange={handleChanged} />
+        <span>{todo}</span>
+      </CheckBoxStyle>
+      <span className='btn-wrapper'>
+        <Button
+          text='수정'
+          btnWidth='60px'
+          btnPadding='5px'
+          dataTestId='modify-button'
+          onClick={() => {
+            throw new Error('구현 필요');
+          }}
+        />
+        <Button
+          text='삭제'
+          btnWidth='60px'
+          btnPadding='5px'
+          dataTestId='delete-button'
+          onClick={handleDelete}
+        />
+      </span>
+    </TodoItemStyle>
+  );
+}

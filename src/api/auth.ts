@@ -8,7 +8,7 @@ const fetchSignIn = async (email: string, password: string): Promise<{ access_to
   return response.data;
 };
 
-const fetchSignUp = async (email: string, password: string): Promise<any> => {
+const fetchSignUp = async (email: string, password: string) => {
   try {
     const response = await instance.post('/auth/signup', {
       email: email,

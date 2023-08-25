@@ -1,8 +1,8 @@
+import { fetchSignUp } from 'api/auth';
 import Button from 'components/common/Button';
 import Input from 'components/common/Input';
-import { AuthContext } from 'context/auth/AuthContext';
 import useFormValidation from 'hooks/useFormValidation';
-import { ChangeEvent, FormEvent, useContext } from 'react';
+import { ChangeEvent, FormEvent } from 'react';
 import { FormStyle } from 'styles/CommonStyle';
 
 export default function SignInForm() {
@@ -18,11 +18,10 @@ export default function SignInForm() {
     initialEmail: '',
     initialPassword: '',
   });
-  const authCtx = useContext(AuthContext);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    authCtx.signIn(email, password);
+    fetchSignUp(email, password);
   };
 
   const formFields = [
@@ -57,9 +56,9 @@ export default function SignInForm() {
       ))}
       <Button
         type='submit'
-        dataTestId='signin-button'
+        dataTestId='signup-button'
         disabled={!isValid}
-        text='로그인'
+        text='회원가입'
         btnWidth=''
         btnPadding=''
       />
