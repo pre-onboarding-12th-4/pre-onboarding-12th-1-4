@@ -8,18 +8,21 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
 
   const navigate = useNavigate();
 
-  const signIn = useCallback(async (email: string, password: string) => {
-    try {
-      const res = await fetchSignIn(email, password);
-      if (res && res.access_token) {
-        localStorage.setItem('token', res.access_token);
-        setUser(true);
-        navigate('/todo');
+  const signIn = useCallback(
+    async (email: string, password: string) => {
+      try {
+        const res = await fetchSignIn(email, password);
+        if (res && res.access_token) {
+          localStorage.setItem('token', res.access_token);
+          setUser(true);
+          navigate('/todo');
+        }
+      } catch (error) {
+        alert('일치하는 사용자가 없습니다.');
       }
-    } catch (error) {
-      alert('일치하는 사용자가 없습니다.');
-    }
-  }, []);
+    },
+    [navigate],
+  );
 
   const signUp = useCallback(
     async (email: string, password: string) => {
@@ -34,10 +37,11 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
     [navigate],
   );
 
-  const logout = useCallback(() => {
+  const logout = () => {
     localStorage.removeItem('token');
     setUser(false);
-  }, []);
+    navigate('/');
+  };
 
   return (
     <AuthContext.Provider value={{ user, signIn, signUp, logout }}>
