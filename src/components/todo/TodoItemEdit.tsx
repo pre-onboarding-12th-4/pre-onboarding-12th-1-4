@@ -2,8 +2,20 @@
 import Button from 'components/common/Button';
 import Input from 'components/common/Input';
 import { TodoContext } from 'context/todo/TodoContext';
-import { useCallback, useContext, useState } from 'react';
+import { FormEvent, useCallback, useContext, useState } from 'react';
+import styled from 'styled-components';
 import { Todo } from 'types';
+
+const EditFormStyle = styled.form`
+  width: 100%;
+  & > div {
+    width: 100%;
+    padding: 0;
+  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 interface Props {
   cancelEdit: () => void;
@@ -14,17 +26,21 @@ export default function TodoItemEdit({ todo, cancelEdit }: Props) {
   const [newTodo, setNewTodo] = useState(todo.todo);
   const [warningText, setWarningText] = useState('');
 
-  const onSubmitTodo = useCallback(() => {
-    if (!newTodo.replace(' ', '')) {
-      setWarningText('내용을 입력해주세요~');
-      return;
-    }
-    updateTodo(todo.id, newTodo, todo.isCompleted);
-    cancelEdit();
-  }, [cancelEdit, newTodo, todo.id, todo.isCompleted, updateTodo]);
+  const onSubmitTodo = useCallback(
+    (e: FormEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      if (!newTodo.replace(' ', '')) {
+        setWarningText('내용을 입력해주세요.');
+        return;
+      }
+      updateTodo(todo.id, newTodo, todo.isCompleted);
+      cancelEdit();
+    },
+    [cancelEdit, newTodo, todo.id, todo.isCompleted, updateTodo],
+  );
 
   return (
-    <>
+    <EditFormStyle>
       <div>
         <Input
           dataTestId={'modify-input'}
@@ -39,6 +55,7 @@ export default function TodoItemEdit({ todo, cancelEdit }: Props) {
       </div>
       <span className='btn-wrapper'>
         <Button
+          type='submit'
           text='제출'
           btnWidth='60px'
           btnPadding='5px'
@@ -53,6 +70,6 @@ export default function TodoItemEdit({ todo, cancelEdit }: Props) {
           onClick={cancelEdit}
         />
       </span>
-    </>
+    </EditFormStyle>
   );
 }

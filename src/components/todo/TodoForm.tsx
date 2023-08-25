@@ -2,7 +2,23 @@ import Button from 'components/common/Button';
 import Input from 'components/common/Input';
 import { TodoContext } from 'context/todo/TodoContext';
 import { ChangeEvent, FormEvent, useContext, useEffect, useState } from 'react';
-import { FormStyle } from 'styles/CommonStyle';
+import styled from 'styled-components';
+
+const TodoFormStyle = styled.form`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 30px 30px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & > div {
+    width: 90%;
+  }
+  button {
+    flex-shrink: 0;
+  }
+`;
 
 export default function TodoForm() {
   const { createTodo } = useContext(TodoContext);
@@ -17,7 +33,7 @@ export default function TodoForm() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!isTodoValid) {
-      setWarning('할일을 입력하셔야 해여 ㅜㅜ');
+      setWarning('빈 값을 일정으로 추가할 수 없습니다.');
       return;
     }
     createTodo(text);
@@ -40,15 +56,18 @@ export default function TodoForm() {
     dataTestId: 'new-todo-input',
   };
   return (
-    <FormStyle onSubmit={handleSubmit}>
-      <Input {...input} />
+    <TodoFormStyle onSubmit={handleSubmit}>
+      <div>
+        <Input {...input} />
+      </div>
       <Button
         type='submit'
         dataTestId='new-todo-add-button'
         text='생성'
-        btnWidth=''
-        btnPadding=''
+        btnWidth='20%'
+        btnPadding='10px'
+        className='clear-btn'
       />
-    </FormStyle>
+    </TodoFormStyle>
   );
 }

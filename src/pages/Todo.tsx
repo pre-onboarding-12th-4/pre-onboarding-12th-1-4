@@ -1,18 +1,26 @@
 import TodoForm from 'components/todo/TodoForm';
 import TodoList from 'components/todo/TodoList';
 import TodoContextProvider from 'context/todo/TodoContextProvider';
+import styled from 'styled-components';
 import { ContainerStyle, HeaderStyle } from 'styles/CommonStyle';
+
+const Container = styled(ContainerStyle)`
+  position: relative;
+  max-width: 600px;
+  padding-bottom: 80px;
+  min-height: 315px;
+`;
 
 const Todo = () => {
   return (
     <TodoContextProvider>
-      <ContainerStyle>
+      <Container>
         <HeaderStyle>
-          <h1>Todo</h1>
+          <h1>To Do</h1>
         </HeaderStyle>
         <TodoForm />
         <TodoList />
-      </ContainerStyle>
+      </Container>
     </TodoContextProvider>
   );
 };
