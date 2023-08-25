@@ -12,6 +12,10 @@ const InputStyle = styled.input`
   &:hover {
     border-bottom: 1px solid white;
   }
+  &:focus {
+    outline: none;
+    border-bottom: solid 1px black;
+  }
 `;
 
 const WarningText = styled.p`
