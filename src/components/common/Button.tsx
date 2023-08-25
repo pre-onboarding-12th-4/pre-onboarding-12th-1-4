@@ -11,6 +11,13 @@ const ButtonStyle = styled.button`
   &:disabled {
     cursor: initial;
   }
+  &.clear-btn {
+    background: transparent;
+  }
+  &.clear-btn:not(:disabled):hover {
+    background: var(--color-white20);
+    color: white;
+  }
 `;
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {

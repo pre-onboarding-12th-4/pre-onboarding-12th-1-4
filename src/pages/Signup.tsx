@@ -7,7 +7,7 @@ const Signup = () => {
     <AuthContextProvider>
       <ContainerStyle>
         <HeaderStyle>
-          <h1>회원가입</h1>
+          <h1>Sign Up</h1>
         </HeaderStyle>
         <SignUpForm />
       </ContainerStyle>

@@ -2,7 +2,7 @@ import TodoContextProvider from 'context/todo/TodoContextProvider';
 import Home from 'pages/Home';
 import NotFound from 'pages/NotFound';
 import Signin from 'pages/SignIn';
-import Signup from 'pages/Signup';
+import Signup from 'pages/SignUp';
 import Todo from 'pages/Todo';
 import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
 import GlobalStyle from 'styles/GlobalStyle';

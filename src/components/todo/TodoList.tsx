@@ -14,7 +14,7 @@ export default function TodoList() {
       ) : (
         todos.map(todo => <TodoItem key={todo.id} todo={todo} />)
       )}
-      {<Loading loading={loading} />}
+      <Loading loading={loading} />
     </TodoListStyle>
   );
 }
