@@ -48,10 +48,19 @@ npm start
 ### 사용 라이브러리
 
 ```js
-"axios": "^1.2.2",
-"react-router-dom": "^6.15.0",
-"styled-components": "^6.0.7",
-"typescript": "^4.9.5",
+"dependencies" : {
+  "axios": "^1.2.2",
+  "react-router-dom": "^6.15.0",
+  "styled-components": "^6.0.7",
+  "typescript": "^4.9.5"
+}
+
+"devDependecies" : {
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "husky": "^8.0.3",
+    "prettier": "^3.0.2"
+}
 ```
 
 ### Commit Message 컨벤션
