@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const InputStyle = styled.input`
@@ -11,6 +11,10 @@ const InputStyle = styled.input`
   }
   &:hover {
     border-bottom: 1px solid white;
+  }
+  &:focus {
+    outline: none;
+    border-bottom: solid 1px black;
   }
 `;
 
@@ -26,6 +30,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   warning: string;
   labelText: string;
   inputId: string;
+  focus?: boolean;
   // ref: HTMLInputElement;
 }
 
@@ -34,20 +39,20 @@ export default function Input({
   warning,
   labelText,
   inputId,
-  // ref,
+  focus,
   ...InputProps
 }: Props) {
+  const editRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    focus && editRef.current?.focus();
+  }, [focus]);
   return (
     <>
       <label className='a11y-hidden' htmlFor={inputId}>
         {labelText}
       </label>
-      <InputStyle
-        id={inputId}
-        data-testid={dataTestId}
-        {...InputProps}
-        // ref={ref}
-      />
+      <InputStyle id={inputId} data-testid={dataTestId} {...InputProps} ref={editRef} />
       <WarningText>{warning}</WarningText>
     </>
   );
