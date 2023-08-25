@@ -23,21 +23,11 @@ export default function AuthForm() {
   const location = useLocation();
   const isPath = location.pathname === '/signin';
 
-  const handleReset = () => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    isPath ? authCtx.signIn(email, password) : authCtx.signUp(email, password);
     handleEmailChange('');
     handlePasswordChange('');
-  };
-
-  const handleSignIn = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    authCtx.signIn(email, password);
-    handleReset();
-  };
-
-  const handleSignUp = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    authCtx.signUp(email, password);
-    handleReset();
   };
 
   const formFields = [
@@ -65,29 +55,21 @@ export default function AuthForm() {
     },
   ];
 
+  const buttonProps = {
+    disabled: !isValid,
+    btnWidth: '',
+    btnPadding: '',
+  };
+
   return (
-    <FormStyle onSubmit={isPath ? handleSignIn : handleSignUp}>
+    <FormStyle onSubmit={handleSubmit}>
       {formFields.map((input, index) => (
         <Input key={index} {...input} />
       ))}
       {isPath ? (
-        <Button
-          type='submit'
-          dataTestId='signin-button'
-          disabled={!isValid}
-          text='로그인'
-          btnWidth=''
-          btnPadding=''
-        />
+        <Button {...buttonProps} dataTestId='signin-button' text='로그인' />
       ) : (
-        <Button
-          type='submit'
-          dataTestId='signup-button'
-          disabled={!isValid}
-          text='회원가입'
-          btnWidth=''
-          btnPadding=''
-        />
+        <Button {...buttonProps} dataTestId='signup-button' text='회원가입' />
       )}
     </FormStyle>
   );
