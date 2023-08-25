@@ -1,41 +1,47 @@
-# 원티드 프리온보딩 1주차 과제  
-- 해당 repository는 원티드 프리온보딩 프론트엔트 인턴쉽 12차 1주차 과제을 다뤘습니다. 
-- 프리온보딩 선발과제인 todo를 팀원들과 상의해 각 기능의 Best Practice를 도출하고 합친 결과물입니다. 
+# 원티드 프리온보딩 1주차 과제
 
+- 해당 repository는 원티드 프리온보딩 프론트엔트 인턴쉽 12차 1주차 과제을 다뤘습니다.
+- 프리온보딩 선발과제인 todo를 팀원들과 상의해 각 기능의 Best Practice를 도출하고 합친 결과물입니다.
 
-## 팀 구성원 및 역할 
+## 팀 구성원 및 역할
+
 - 원티드 프리온보딩 프론트엔트 인턴쉽 12차 4팀입니다.
 
-| **강병헌** | **김누리** | **김신혁** | **박윤철** | **우혜리** | **이은학** |
-| :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
-|<img width="180" alt="" src="https://avatars.githubusercontent.com/u/33623123?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/19181088?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/73675549?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/22779951?v=4" > |<img width="180" alt="" src="https://avatars.githubusercontent.com/u/107099724?v=4" > |<img width="180" alt="" src="https://avatars.githubusercontent.com/u/52943412?v=4" > |
-| [llbllhllk](https://github.com/llbllhllk) | [nuri1042](https://github.com/nuri1042) | [devshinn](https://github.com/devshinn) | [mrsimplelife](https://github.com/mrsimplelife) | [hyeri-woo](https://github.com/hyeri-woo) | [dmsgkr02](https://github.com/dmsgkr02) |
-|SignIn 페이지|SignUp 페이지|초기 프로젝트 환경 설정, todo 수정|todo 보기, 삭제|axios / context api 설정, 스타일링|route 및 권한에 따른 global layout 작성|
+|                                     **강병헌**                                      |                                     **김누리**                                      |                                     **김신혁**                                      |                                      **박윤철**                                      |                                      **우혜리**                                       |                                      **이은학**                                      |
+| :---------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
+| <img width="180" alt="" src="https://avatars.githubusercontent.com/u/33623123?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/19181088?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/73675549?v=4"> | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/22779951?v=4" > | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/107099724?v=4" > | <img width="180" alt="" src="https://avatars.githubusercontent.com/u/52943412?v=4" > |
+|                      [llbllhllk](https://github.com/llbllhllk)                      |                       [nuri1042](https://github.com/nuri1042)                       |                       [devshinn](https://github.com/devshinn)                       |                   [mrsimplelife](https://github.com/mrsimplelife)                    |                       [hyeri-woo](https://github.com/hyeri-woo)                       |                       [dmsgkr02](https://github.com/dmsgkr02)                        |
+|                                    SignIn 페이지                                    |                                    SignUp 페이지                                    |                         초기 프로젝트 환경 설정, todo 수정                          |                                   todo 보기, 삭제                                    |                          axios / context api 설정, 스타일링                           |                       route 및 권한에 따른 global layout 작성                        |
 
 ## 배포 링크
+
 https://pre-onboarding-12th-1-4-todo-3w1ud55lq-preonboarding-12th-4.vercel.app/
 
-## 프로젝트 실행 방법 
-1. 프로젝트 클론 
+## 프로젝트 실행 방법
+
+1. 프로젝트 클론
+
 ```
 git clone https://github.com/pre-onboarding-12th-4/pre-onboarding-12th-1-4.git
 ```
 
 2. 해당 폴더로 이동
+
 ```
 cd pre-onboarding-12th-1-4
 ```
 
 3. 프로젝트 패키지 설치
+
 ```
 npm install
 ```
+
 4. 프로젝트 실행
+
 ```
 npm start
 ```
-
-
 
 ## 기술 및 개발 환경
 
@@ -142,16 +148,19 @@ module.exports = {
 │   ├── 📄 Home.tsx
 │   ├── 📄 SignIn.tsx
 │   ├── 📄 SignUp.tsx
-│   ├──📄 Todo.tsx
+│   ├── 📄 Todo.tsx
 │   └── 📄 NotFound.tsx
+├── 📂 route
+│   ├── 📄 loader.ts
 ├── 📂 styles
 └── 📂 types
 
 ```
+
 ## UI
 
-
 ## 기능 상세
+
 현재 README에는 동료학습을 통해 도출된 각 Assignment의 Best Practice을 포함되어 있습니다. 더 자세한 내용은 해당 <a href='https://www.notion.so/1-Todo-889cfeef034b42ea8d071a5ecfa2fff5'>노션 링크</a>에서 확인하실 수 있습니다.
 
 ### Assignment 1: 유효성 검사

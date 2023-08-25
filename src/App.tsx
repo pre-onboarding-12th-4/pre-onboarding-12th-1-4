@@ -6,7 +6,7 @@ import Signin from 'pages/SignIn';
 import SignUp from 'pages/Signup';
 import Todo from 'pages/Todo';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { signLoader, todoLoader } from 'routes/loader';
+import { signLoader, todoLoader } from 'route/loader';
 import GlobalStyle from 'styles/GlobalStyle';
 
 const router = createBrowserRouter([
