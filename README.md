@@ -15,7 +15,7 @@
 
 ## 배포 링크
 
-https://pre-onboarding-12th-1-4-todo-3w1ud55lq-preonboarding-12th-4.vercel.app/
+https://pre-onboarding-12th-1-4.vercel.app
 
 ## 프로젝트 실행 방법
 
