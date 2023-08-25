@@ -1,3 +1,4 @@
+import TodoContextProvider from 'context/todo/TodoContextProvider';
 import Home from 'pages/Home';
 import Signin from 'pages/SignIn';
 import Signup from 'pages/Signup';
@@ -11,7 +12,14 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/todo' element={<Todo />} />
+        <Route
+          path='/todo'
+          element={
+            <TodoContextProvider>
+              <Todo />
+            </TodoContextProvider>
+          }
+        />
         <Route path='/signin' element={<Signin />} />
         <Route path='/signup' element={<Signup />} />
       </Routes>
