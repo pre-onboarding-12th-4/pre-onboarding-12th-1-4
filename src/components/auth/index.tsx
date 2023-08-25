@@ -3,9 +3,10 @@ import Input from 'components/common/Input';
 import { AuthContext } from 'context/auth/AuthContext';
 import useFormValidation from 'hooks/useFormValidation';
 import { ChangeEvent, FormEvent, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import { FormStyle } from 'styles/CommonStyle';
 
-export default function SignInForm() {
+export default function AuthForm() {
   const {
     email,
     password,
@@ -19,10 +20,24 @@ export default function SignInForm() {
     initialPassword: '',
   });
   const authCtx = useContext(AuthContext);
+  const location = useLocation();
+  const isPath = location.pathname === '/signin';
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleReset = () => {
+    handleEmailChange('');
+    handlePasswordChange('');
+  };
+
+  const handleSignIn = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     authCtx.signIn(email, password);
+    handleReset();
+  };
+
+  const handleSignUp = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    authCtx.signUp(email, password);
+    handleReset();
   };
 
   const formFields = [
@@ -51,18 +66,29 @@ export default function SignInForm() {
   ];
 
   return (
-    <FormStyle onSubmit={handleSubmit}>
+    <FormStyle onSubmit={isPath ? handleSignIn : handleSignUp}>
       {formFields.map((input, index) => (
         <Input key={index} {...input} />
       ))}
-      <Button
-        type='submit'
-        dataTestId='signin-button'
-        disabled={!isValid}
-        text='로그인'
-        btnWidth=''
-        btnPadding=''
-      />
+      {isPath ? (
+        <Button
+          type='submit'
+          dataTestId='signin-button'
+          disabled={!isValid}
+          text='로그인'
+          btnWidth=''
+          btnPadding=''
+        />
+      ) : (
+        <Button
+          type='submit'
+          dataTestId='signup-button'
+          disabled={!isValid}
+          text='회원가입'
+          btnWidth=''
+          btnPadding=''
+        />
+      )}
     </FormStyle>
   );
 }

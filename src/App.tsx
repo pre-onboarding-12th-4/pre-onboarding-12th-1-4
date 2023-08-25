@@ -2,8 +2,7 @@ import AuthContextProvider from 'context/auth/AuthContextProvider';
 import TodoContextProvider from 'context/todo/TodoContextProvider';
 import Home from 'pages/Home';
 import NotFound from 'pages/NotFound';
-import Signin from 'pages/SignIn';
-import SignUp from 'pages/Signup';
+import Auth from 'pages/Auth';
 import Todo from 'pages/Todo';
 import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
 import GlobalStyle from 'styles/GlobalStyle';
@@ -43,12 +42,12 @@ const router = createBrowserRouter([
   },
   {
     path: '/signin',
-    element: <Signin />,
+    element: <Auth />,
     loader: signLoader,
   },
   {
     path: '/signup',
-    element: <SignUp />,
+    element: <Auth />,
     loader: signLoader,
   },
 ]);
