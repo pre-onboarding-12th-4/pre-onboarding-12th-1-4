@@ -5,24 +5,9 @@ import NotFound from 'pages/NotFound';
 import Signin from 'pages/SignIn';
 import SignUp from 'pages/Signup';
 import Todo from 'pages/Todo';
-import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { signLoader, todoLoader } from 'routes/loader';
 import GlobalStyle from 'styles/GlobalStyle';
-
-const signLoader = () => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    return redirect('/todo');
-  }
-  return null;
-};
-
-const todoLoader = () => {
-  const token = localStorage.getItem('token');
-  if (!token) {
-    return redirect('/signin');
-  }
-  return null;
-};
 
 const router = createBrowserRouter([
   {
