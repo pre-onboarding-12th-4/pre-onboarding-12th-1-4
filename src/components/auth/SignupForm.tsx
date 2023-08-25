@@ -1,11 +1,11 @@
-import { fetchSignUp } from 'api/auth';
 import Button from 'components/common/Button';
 import Input from 'components/common/Input';
+import { AuthContext } from 'context/auth/AuthContext';
 import useFormValidation from 'hooks/useFormValidation';
-import { ChangeEvent, FormEvent } from 'react';
+import { ChangeEvent, FormEvent, useContext } from 'react';
 import { FormStyle } from 'styles/CommonStyle';
 
-export default function SignInForm() {
+export default function SignUpForm() {
   const {
     email,
     password,
@@ -18,10 +18,10 @@ export default function SignInForm() {
     initialEmail: '',
     initialPassword: '',
   });
-
+  const ctx = useContext(AuthContext);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    fetchSignUp(email, password);
+    ctx.signUp(email, password);
   };
 
   const formFields = [
