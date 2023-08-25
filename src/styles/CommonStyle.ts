@@ -74,11 +74,11 @@ const TodoListStyle = styled.ul`
   gap: 5px;
   padding: 20px 30px;
   clear: both;
-  p {
+  /* p {
     width: 100%;
     text-align: center;
     padding: 30px;
-  }
+  } */
 `;
 
 const TodoItemStyle = styled.li`
